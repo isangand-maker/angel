@@ -5,7 +5,7 @@ set -e
 
 npm install -g pnpm@10.33.0
 
-pnpm install --no-frozen-lockfile --config.dangerouslyAllowAllBuilds=true
+pnpm install --no-frozen-lockfile
 pnpm run build
 pnpm --filter @workspace/db run push
 
