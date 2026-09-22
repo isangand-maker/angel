@@ -19,6 +19,10 @@ jobs:
           script: |
             set -e
             DEPLOY_PATH=/var/www/angel-home-renewal
+            echo "=== DIAGNOSTIC ==="
+            ls -la "$DEPLOY_PATH/ecosystem.config.cjs" 2>&1 || echo "NOT FOUND at $DEPLOY_PATH/ecosystem.config.cjs"
+            find / -maxdepth 6 -iname "ecosystem.config.cjs" 2>/dev/null || true
+            echo "=== END DIAGNOSTIC ==="
             if [ ! -d "$DEPLOY_PATH/.git" ]; then
               mkdir -p /root/angel-backups
               tar -czf /root/angel-backups/site-$(date +%Y%m%d-%H%M%S).tar.gz -C "$(dirname "$DEPLOY_PATH")" "$(basename "$DEPLOY_PATH")" || true
