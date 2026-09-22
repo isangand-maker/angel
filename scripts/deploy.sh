@@ -7,7 +7,7 @@ if ! command -v pnpm >/dev/null 2>&1; then
   npm install -g pnpm
 fi
 
-pnpm install --frozen-lockfile
+pnpm install --no-frozen-lockfile
 pnpm run build
 pnpm --filter @workspace/db run push
 
