@@ -1,0 +1,40 @@
+import { Router, type IRouter } from "express";
+import healthRouter from "./health";
+import adminAuthRouter from "./admin-auth";
+import adminAccountsRouter from "./admin-accounts";
+import settingsRouter from "./settings";
+import facilityPhotosRouter from "./facility-photos";
+import partnersRouter from "./partners";
+import uploadRouter from "./upload";
+import noticesRouter from "./notices";
+import faqsRouter from "./faqs";
+import inquiriesRouter from "./inquiries";
+import galleryRouter from "./gallery";
+import childcareSharesRouter from "./childcare-shares";
+import pushRouter from "./push";
+import membersRouter from "./members";
+import calendarEventsRouter from "./calendar-events";
+import donationNewsRouter from "./donation-news";
+import popupBannersRouter from "./popup-banners";
+
+const router: IRouter = Router();
+
+router.use(healthRouter);
+router.use(adminAuthRouter);
+router.use(adminAccountsRouter);
+router.use(settingsRouter);
+router.use(facilityPhotosRouter);
+router.use(partnersRouter);
+router.use(uploadRouter);
+router.use(noticesRouter);
+router.use(faqsRouter);
+router.use(inquiriesRouter);
+router.use(galleryRouter);
+router.use(childcareSharesRouter);
+router.use(pushRouter);
+router.use(membersRouter);
+router.use(calendarEventsRouter);
+router.use(donationNewsRouter);
+router.use(popupBannersRouter);
+
+export default router;

@@ -1,0 +1,44 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "OvKzArHfrU2fPQdGhZCiN"
+uri = "file://artifacts/angels-home/public/images/hero.png"
+type = "image"
+title = "Warm hopeful hands reaching"
+
+[[generated]]
+id = "ut5hTD01FMkOxANZDoFEo"
+uri = "file://artifacts/angels-home/public/images/mission.png"
+type = "image"
+title = "Peaceful nursery room"
+
+[[generated]]
+id = "7hnQBtS-b91ya20-Biiu7"
+uri = "file://artifacts/angels-home/public/images/support.png"
+type = "image"
+title = "Care and support hands"
+
+[[generated]]
+id = "vPCuElHVBn7wgUmzSrXZo"
+uri = "file://artifacts/angels-home/public/images/facility-1.png"
+type = "image"
+title = "Cozy nursery room with sunlight"
+
+[[generated]]
+id = "5AFWDe9Kp2Ax2lHUpMpem"
+uri = "file://artifacts/angels-home/public/images/facility-2.png"
+type = "image"
+title = "Warm counseling room interior"
+
+[[generated]]
+id = "GJaSeKKdD2CauHuGRpfMi"
+uri = "file://artifacts/angels-home/public/images/program-1.png"
+type = "image"
+title = "Hands holding baby hands"
+
+[[generated]]
+id = "wIOOaLzwFYdXH55faIjps"
+uri = "file://artifacts/angels-home/public/images/program-2.png"
+type = "image"
+title = "Women studying together"
