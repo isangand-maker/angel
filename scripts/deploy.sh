@@ -11,6 +11,7 @@ npm install -g pnpm@10.33.0
 pnpm install --no-frozen-lockfile
 pnpm run typecheck
 pnpm -r --filter '!./artifacts/mockup-sandbox' --if-present run build
+export DATABASE_URL=$(node -e "console.log(require('./ecosystem.config.cjs').apps[0].env.DATABASE_URL)")
 pnpm --filter @workspace/db run push
 
 pm2 reload ecosystem.config.cjs --env production
