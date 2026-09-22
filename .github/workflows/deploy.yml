@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - claude/angelshome-access-fix-97zckd
+  workflow_dispatch: {}
 
 jobs:
   deploy:
@@ -14,10 +15,24 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          password: ${{ secrets.DEPLOY_SSH_PASSWORD }}
           script: |
             set -e
-            cd ${{ secrets.DEPLOY_PATH }}
+            DEPLOY_PATH=/var/www/angel-home-renewal
+            if [ ! -d "$DEPLOY_PATH/.git" ]; then
+              mkdir -p /root/angel-backups
+              tar -czf /root/angel-backups/site-$(date +%Y%m%d-%H%M%S).tar.gz -C "$(dirname "$DEPLOY_PATH")" "$(basename "$DEPLOY_PATH")" || true
+              DB_URL=$(node -e "console.log(require('$DEPLOY_PATH/ecosystem.config.cjs').apps[0].env.DATABASE_URL)" 2>/dev/null || true)
+              if [ -n "$DB_URL" ]; then
+                pg_dump "$DB_URL" > /root/angel-backups/db-$(date +%Y%m%d-%H%M%S).sql 2>/dev/null || true
+              fi
+              cd "$DEPLOY_PATH"
+              git init
+              git remote add origin https://github.com/isangand-maker/angel.git
+            else
+              cd "$DEPLOY_PATH"
+            fi
             git fetch origin
+            git checkout -f claude/angelshome-access-fix-97zckd
             git reset --hard origin/claude/angelshome-access-fix-97zckd
             bash scripts/deploy.sh
